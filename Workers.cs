@@ -76,6 +76,7 @@ namespace project
             table.Clear();
             GetListWorkers();
         }
+
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (!e.RowIndex.Equals(-1) && !e.ColumnIndex.Equals(-1) && e.Button.Equals(MouseButtons.Right))
@@ -88,7 +89,7 @@ namespace project
 
         public void DeleteRow(string deletedRow)
         {
-            MySqlCommand comm = new MySqlCommand($"Delete from Sotr where ID  '{deletedRow}'", conn);
+            MySqlCommand comm = new MySqlCommand($"Delete from Sotr where ID = '{deletedRow}'", conn);
             try
             {
                 conn.Open();
@@ -122,6 +123,11 @@ namespace project
         private void deleteButton_Click(object sender, EventArgs e)
         {
             DeleteRow(idSelectedRow);
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
