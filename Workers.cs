@@ -19,7 +19,7 @@ namespace project
         }
 
         MySqlConnection conn;
-        MySqlDataAdapter MyDA = new MySqlDataAdapter();
+        MySqlDataAdapter daAD = new MySqlDataAdapter();
         BindingSource bSource = new BindingSource();
         DataSet ds = new DataSet();
         DataTable table = new DataTable();
@@ -27,8 +27,7 @@ namespace project
 
         private void Workers_Load(object sender, EventArgs e)
         {
-            string connStr = "server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;";
-            conn = new MySqlConnection(connStr);
+            conn = new MySqlConnection("server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;");
             GetListWorkers();
 
             dataGridView1.Columns[0].Visible = true;
@@ -57,18 +56,18 @@ namespace project
 
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.ColumnHeadersVisible = true;
+           // MessageBox.Show( Convert.ToString(dataGridView1.RowCount - 1));
         }
 
         public void GetListWorkers()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Obrazovanie AS 'Образование', Doljnost AS 'Должность', Kvalifikaciya AS 'Квалификация', Cnils AS 'Снилс', zarplata AS 'Зарплата' FROM Sotr";
+            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Education AS 'Образование', Post AS 'Должность', Qualification AS 'Квалификация', Snils AS 'Снилс' FROM Workers";
             conn.Open();
-            MyDA.SelectCommand = new MySqlCommand(commandStr, conn);
-            MyDA.Fill(table);
+            daAD.SelectCommand = new MySqlCommand(commandStr, conn);
+            daAD.Fill(table);
             bSource.DataSource = table;
             dataGridView1.DataSource = bSource;
             conn.Close();
-            int count_rows = dataGridView1.RowCount - 1;
         }
 
         public void ReloadList()
@@ -77,14 +76,10 @@ namespace project
             GetListWorkers();
         }
 
-        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        public void AddWorker(string column, string value)
         {
-            if (!e.RowIndex.Equals(-1) && !e.ColumnIndex.Equals(-1) && e.Button.Equals(MouseButtons.Right))
-            {
-                dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
-                dataGridView1.CurrentCell.Selected = true;
-                GetSelectedIDString();
-            }
+            MySqlCommand cmd = new MySqlCommand($"insert into Workers ({column}) values ({value})", conn);
+            cmd.ExecuteNonQuery();
         }
 
         public void DeleteRow(string deletedRow)
@@ -108,6 +103,29 @@ namespace project
             }
         }
 
+        void DataUpdate()
+        {
+            conn.Open();
+            int rowsCount = dataGridView1.RowCount -1;
+            for (int i = 0; i < rowsCount ; i++)
+            { 
+                string cmd = $"update Workers set FIO = '{dataGridView1[1, i].Value.ToString()}', Education = '{dataGridView1[2, i].Value.ToString()}', Post = '{dataGridView1[3, i].Value.ToString()}', Qualification = '{dataGridView1[4, i].Value.ToString()}', Snils = '{Convert.ToInt32(dataGridView1[5, i].Value.ToString())}' where ID = '{Convert.ToInt32(dataGridView1[0, i].Value.ToString())}'";
+                MySqlCommand command = new MySqlCommand(cmd, conn);
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (!e.RowIndex.Equals(-1) && !e.ColumnIndex.Equals(-1) && e.Button.Equals(MouseButtons.Right))
+            {
+                dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+                dataGridView1.CurrentCell.Selected = true;
+                GetSelectedIDString();
+            }
+        }
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             ReloadList();
@@ -126,6 +144,18 @@ namespace project
         }
 
         private void saveButton_Click(object sender, EventArgs e)
+        {
+            DataUpdate();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            dataGridView1.CurrentCell.Selected = true;
+            GetSelectedIDString();
+        }
+
+        private void addWorkersButton_Click(object sender, EventArgs e)
         {
 
         }

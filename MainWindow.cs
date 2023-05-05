@@ -11,32 +11,35 @@ using MySql.Data.MySqlClient;
 
 namespace project
 {
-    public partial class Form2 : Form
+    public partial class MainWindow : Form
     {
         private Form activeWindow = null;
         private Button activeButton = null;
         private Workers workers = new Workers();
+        private Vacations vacations = new Vacations();
+        private PassportData passportData = new PassportData();
         private PlaceHolder placeHolder = new PlaceHolder();
         public MySqlConnection conn;
 
-        public Form2()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
             string connStr = "server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;";
             conn = new MySqlConnection(connStr);
-            activeButton = button1;
-            activeWindow = placeHolder;
-            placeHolder.Show();
         }
 
         private void WindowLoad(Form window, Button presedButton)
         {
-            activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
-            activeWindow.Close();
+            if(activeButton != null)
+            {
+                activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
+                activeButton.BackColor = Color.DarkSalmon;
+                activeWindow.Hide();
+            }
             window.FormBorderStyle = FormBorderStyle.None;
             window.Dock = DockStyle.Fill;
             window.TopLevel = false;
@@ -44,13 +47,30 @@ namespace project
             this.panelFront.Tag = window;
             window.BringToFront();  
             window.Show();
+            activeWindow = window;
             activeButton = presedButton;
             activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Bold);
+            activeButton.BackColor= Color.OrangeRed;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void workersButton_Click(object sender, EventArgs e)
         {
             WindowLoad(workers, workerButton);
+        }
+
+        private void vacationsButton_Click(object sender, EventArgs e)
+        {
+            WindowLoad(vacations, vacationsButton);
+        }
+
+        private void pasportButton_Click(object sender, EventArgs e)
+        {
+            WindowLoad(passportData, pasportButton);
+        }
+
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

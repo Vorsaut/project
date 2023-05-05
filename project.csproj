@@ -81,17 +81,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Auth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Auth.Designer.cs">
+      <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Background.cs" />
+    <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassportData.Designer.cs">
+      <DependentUpon>PassportData.cs</DependentUpon>
     </Compile>
     <Compile Include="PlaceHolder.cs">
       <SubType>Form</SubType>
@@ -113,11 +120,14 @@
     <Compile Include="Workers.Designer.cs">
       <DependentUpon>Workers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Auth.resx">
+      <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaceHolder.resx">
+      <DependentUpon>PlaceHolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,7 +137,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vacations.resx">
+      <DependentUpon>Vacations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Workers.resx">
       <DependentUpon>Workers.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +158,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-cancel-179429.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-check-mark-4225683.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-cancel-179429_photo-resizer.ru.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-check-mark-4225683_photo-resizer.ru.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
