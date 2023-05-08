@@ -61,7 +61,7 @@ namespace project
 
         public void GetListWorkers()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Education AS 'Образование', Post AS 'Должность', Qualification AS 'Квалификация', Snils AS 'Снилс' FROM Workers";
+            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Post AS 'Должность', WorkedHours AS 'Отработанные часы', Salary AS 'Зарплата' FROM Workers";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);
@@ -109,7 +109,7 @@ namespace project
             int rowsCount = dataGridView1.RowCount -1;
             for (int i = 0; i < rowsCount ; i++)
             { 
-                string cmd = $"update Workers set FIO = '{dataGridView1[1, i].Value.ToString()}', Education = '{dataGridView1[2, i].Value.ToString()}', Post = '{dataGridView1[3, i].Value.ToString()}', Qualification = '{dataGridView1[4, i].Value.ToString()}', Snils = '{Convert.ToInt32(dataGridView1[5, i].Value.ToString())}' where ID = '{Convert.ToInt32(dataGridView1[0, i].Value.ToString())}'";
+                string cmd = $"update Workers set FIO = '{dataGridView1[1, i].Value.ToString()}', Post = '{dataGridView1[2, i].Value.ToString()}', WorkedHours = '{dataGridView1[3, i].Value.ToString()}' where ID = '{Convert.ToInt32(dataGridView1[0, i].Value.ToString())}'";
                 MySqlCommand command = new MySqlCommand(cmd, conn);
                 command.ExecuteNonQuery();
             }
@@ -157,7 +157,8 @@ namespace project
 
         private void addWorkersButton_Click(object sender, EventArgs e)
         {
-
+            AddWorker addWorker = new AddWorker();
+            addWorker.ShowDialog();
         }
     }
 }

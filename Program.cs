@@ -20,6 +20,4 @@ namespace project
             Application.Run(new Auth());
         }
     }
-
-    
 }
