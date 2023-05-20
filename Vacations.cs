@@ -27,7 +27,6 @@ namespace project
 
         private void Vacations_Load(object sender, EventArgs e)
         {
-            //background.ChainUpdate();
             conn = new MySqlConnection("server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;");
             GetList();
 
@@ -61,13 +60,19 @@ namespace project
 
         public void GetList()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', WorkedHours AS 'Отработанные часы', Salary AS 'Деньги', Days AS 'Дни' FROM Vacations";
+            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', WorkedMonths AS 'Отработанные Месяца', Salary AS 'Деньги', Days AS 'Дни' FROM Vacations";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);
             bSource.DataSource = table;
             dataGridView1.DataSource = bSource;
             conn.Close();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            table.Clear();
+            GetList();
         }
 
 

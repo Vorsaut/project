@@ -24,6 +24,7 @@ namespace project
         DataSet ds = new DataSet();
         DataTable table = new DataTable();
         string idSelectedRow = "0";
+        string fioSelectedRow;
 
         private void Workers_Load(object sender, EventArgs e)
         {
@@ -61,7 +62,7 @@ namespace project
 
         public void GetListWorkers()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Post AS 'Должность', WorkedHours AS 'Отработанные часы', Salary AS 'Зарплата' FROM Workers";
+            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Age AS 'Возраст', Gender AS 'Пол', NumberPasport AS 'Серия и номер паспорта', LivePlace AS 'Место жительства', Snils AS 'Снилс', CodePodrazdel AS 'Код подразделения', DataVidachi AS 'Дата выдачи',  IdPost AS 'Должность', WorkedHours AS 'Отработанные часы', Salary AS 'Зарплата' FROM Workers";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);
@@ -76,19 +77,15 @@ namespace project
             GetListWorkers();
         }
 
-        public void AddWorker(string column, string value)
+        public void DeleteRow(string deletedRow, string deletedFio)
         {
-            MySqlCommand cmd = new MySqlCommand($"insert into Workers ({column}) values ({value})", conn);
-            cmd.ExecuteNonQuery();
-        }
-
-        public void DeleteRow(string deletedRow)
-        {
-            MySqlCommand comm = new MySqlCommand($"Delete from Sotr where ID = '{deletedRow}'", conn);
+            MySqlCommand cmd = new MySqlCommand($"Delete from Workers where ID = '{deletedRow}'", conn);
+            MySqlCommand cmd1 = new MySqlCommand($"Delete from Vacations where FIO = '{deletedFio}'", conn);
             try
             {
                 conn.Open();
-                comm.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery();
                 MessageBox.Show("Удаление прошло успешно", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -136,11 +133,13 @@ namespace project
             string selectedRow;
             selectedRow = dataGridView1.SelectedCells[0].RowIndex.ToString();
             idSelectedRow = dataGridView1.Rows[Convert.ToInt32(selectedRow)].Cells[0].Value.ToString();
+            selectedRow = dataGridView1.SelectedCells[0].RowIndex.ToString();
+            fioSelectedRow = dataGridView1.Rows[Convert.ToInt32(selectedRow)].Cells[1].Value.ToString();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            DeleteRow(idSelectedRow);
+            DeleteRow(idSelectedRow, fioSelectedRow);
         }
 
         private void saveButton_Click(object sender, EventArgs e)
