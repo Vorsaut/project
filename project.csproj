@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACData.cs" />
     <Compile Include="AddWorker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,18 +100,17 @@
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Background.cs" />
+    <Compile Include="EditVacation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditVacation.Designer.cs">
+      <DependentUpon>EditVacation.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PassportData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PassportData.Designer.cs">
-      <DependentUpon>PassportData.cs</DependentUpon>
     </Compile>
     <Compile Include="PlaceHolder.cs">
       <SubType>Form</SubType>
@@ -120,11 +120,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VacationDateEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VacationDateEdit.Designer.cs">
+      <DependentUpon>VacationDateEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vacations.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vacations.Designer.cs">
       <DependentUpon>Vacations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VacationSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VacationSet.Designer.cs">
+      <DependentUpon>VacationSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerEdit.Designer.cs">
+      <DependentUpon>WorkerEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Workers.cs">
       <SubType>Form</SubType>
@@ -137,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditVacation.resx">
+      <DependentUpon>EditVacation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -154,8 +175,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VacationDateEdit.resx">
+      <DependentUpon>VacationDateEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vacations.resx">
       <DependentUpon>Vacations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VacationSet.resx">
+      <DependentUpon>VacationSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerEdit.resx">
+      <DependentUpon>WorkerEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Workers.resx">
       <DependentUpon>Workers.cs</DependentUpon>

@@ -18,15 +18,20 @@ namespace project
             InitializeComponent();
         }
 
-        Background background = new Background();
         MySqlConnection conn;
         MySqlDataAdapter daAD = new MySqlDataAdapter();
         BindingSource bSource = new BindingSource();
         DataSet ds = new DataSet();
         DataTable table = new DataTable();
+        public string fioSelectedRow;
 
         private void Vacations_Load(object sender, EventArgs e)
         {
+            if (ACData.data == 0)
+            {
+                toolStrip1.Enabled = false;
+                toolStrip1.Visible = false;
+            }
             conn = new MySqlConnection("server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;");
             GetList();
 
@@ -58,9 +63,16 @@ namespace project
             dataGridView1.ColumnHeadersVisible = true;
         }
 
+        public void GetSelectedIDString()
+        {
+            string selectedRow;
+            selectedRow = dataGridView1.SelectedCells[0].RowIndex.ToString();
+            fioSelectedRow = dataGridView1.Rows[Convert.ToInt32(selectedRow)].Cells[0].Value.ToString();
+        }
+
         public void GetList()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', WorkedMonths AS 'Отработанные Месяца', Salary AS 'Деньги', Days AS 'Дни' FROM Vacations";
+            string commandStr = "SELECT FIO AS 'ФИО', WorkedMonths AS 'Отработанные Месяца', Salary AS 'Деньги', Otpusk AS 'Количество отпускых дней', Calendar AS 'Календарь' FROM Vacations";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);
@@ -69,28 +81,36 @@ namespace project
             conn.Close();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void refreshButton_Click(object sender, EventArgs e)
         {
             table.Clear();
             GetList();
         }
 
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            EditVacation editVacation = new EditVacation();
+            editVacation.ShowDialog();
+        }
 
-        //public string Salary(string aue)
-        //{
-        //    string post;
-        //    conn.Open();
-        //    MySqlCommand cmd = new MySqlCommand("select Post from workers");
-        //    switch (post = )
-        //    {
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
 
-        //    }
-        //}
+        }
 
-        //public string Vacations()
-        //{
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+                dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+                dataGridView1.CurrentCell.Selected = true;
+                GetSelectedIDString();
+            
+        }
 
-        //}
-
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dataGridView1.CurrentCell = dataGridView1[e.ColumnIndex, e.RowIndex];
+            dataGridView1.CurrentCell.Selected = true;
+            GetSelectedIDString();
+        }
     }
 }

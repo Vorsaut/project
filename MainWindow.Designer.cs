@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.pasportButton = new System.Windows.Forms.Button();
             this.vacationsButton = new System.Windows.Forms.Button();
             this.workerButton = new System.Windows.Forms.Button();
             this.panelFront = new System.Windows.Forms.Panel();
@@ -39,7 +38,6 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.panelMenu.Controls.Add(this.pasportButton);
             this.panelMenu.Controls.Add(this.vacationsButton);
             this.panelMenu.Controls.Add(this.workerButton);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -47,20 +45,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(153, 500);
             this.panelMenu.TabIndex = 0;
-            // 
-            // pasportButton
-            // 
-            this.pasportButton.BackColor = System.Drawing.Color.DarkSalmon;
-            this.pasportButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pasportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pasportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pasportButton.Location = new System.Drawing.Point(0, 130);
-            this.pasportButton.Name = "pasportButton";
-            this.pasportButton.Size = new System.Drawing.Size(153, 68);
-            this.pasportButton.TabIndex = 3;
-            this.pasportButton.Text = "Паспортные данные";
-            this.pasportButton.UseVisualStyleBackColor = false;
-            this.pasportButton.Click += new System.EventHandler(this.pasportButton_Click);
             // 
             // vacationsButton
             // 
@@ -120,6 +104,5 @@
         private System.Windows.Forms.Button workerButton;
         private System.Windows.Forms.Panel panelFront;
         private System.Windows.Forms.Button vacationsButton;
-        private System.Windows.Forms.Button pasportButton;
     }
 }

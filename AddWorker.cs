@@ -36,9 +36,9 @@ namespace project
             conn.Close();
         }
 
-        public void InsertWorker(TextBox fio, TextBox age, TextBox gender, TextBox number, TextBox place, TextBox snils, TextBox code, TextBox date ,ComboBox post)
+        public void InsertWorker(TextBox fio, TextBox age, TextBox gender, ComboBox post)
         {
-            MySqlCommand cmd = new MySqlCommand($"insert into Workers (FIO, Age, Gender, NumberPasport, LivePlace, Snils, CodePodrazdel, DataVidachi, IdPost) values ('{fio.Text}','{age.Text}','{gender.Text}','{number.Text}','{place.Text}','{snils.Text}','{code.Text}','{date.Text}','{post.Text}')", conn);
+            MySqlCommand cmd = new MySqlCommand($"insert into Workers (FIO, Age, Gender, IdPost) values ('{fio.Text}','{age.Text}','{gender.Text}','{post.Text}')", conn);
             MySqlCommand cmd1 = new MySqlCommand($"insert into Vacations (FIO) values ('{fio.Text}')", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -48,7 +48,7 @@ namespace project
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            InsertWorker(fioText, ageText, genderText, numberpasportText, liveplaceText, snilsText, codeText, dateText, postCombo);
+            InsertWorker(fioText, ageText, genderText, postCombo);
         }
     }
 }

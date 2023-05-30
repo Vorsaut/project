@@ -23,17 +23,6 @@ namespace project
             InitializeComponent();
         }
 
-        private void WindowLoad(Form window)
-        {
-            window.FormBorderStyle = FormBorderStyle.None;
-            window.Dock = DockStyle.Fill;
-            window.TopLevel = false;
-            this.panelWindow.Controls.Add(window);
-            this.panelWindow.Tag = window;
-            window.BringToFront();
-            window.Show();
-        }
-
         bool ConnCheck()
         {
             try
@@ -49,20 +38,38 @@ namespace project
             }
         }
 
+        static string sha256(string value)
+        {
+            var crypt = new System.Security.Cryptography.SHA256Managed();
+            var hash = new System.Text.StringBuilder();
+            byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(value));
+            foreach (byte bt in crypto)
+            {
+                hash.Append(bt.ToString("x2"));
+            }
+            return hash.ToString();
+        }
+
         bool Authorization()
         {
             bool result;
             string login = textBoxLogin.Text;
             string password = textBoxPassword.Text;
-            MySqlCommand cmd = new MySqlCommand("select ACCName from AccauntsData where login = @aL and password = @aP", conn);
-            cmd.Parameters.Add("@aL", MySqlDbType.VarChar).Value = login;
-            cmd.Parameters.Add("@aP", MySqlDbType.VarChar).Value = password;
+            MySqlCommand cmd = new MySqlCommand("select ACCName, Role from AccauntsData where login = @aL and password = @aP", conn);
+            cmd.Parameters.Add("@aL", MySqlDbType.VarChar, 25).Value = login;
+            cmd.Parameters.Add("@aP", MySqlDbType.VarChar, 25).Value = sha256(textBoxPassword.Text);
             conn.Open();
             daAd.SelectCommand = cmd;
             daAd.Fill(dT);
             conn.Close();
             if (dT.Rows.Count > 0)
+            {
+                MySqlCommand com = new MySqlCommand($"select Role from AccauntsData where login = '{login}'", conn);
+                conn.Open();
+                ACData.data = Convert.ToInt32(com.ExecuteScalar());
+                conn.Close();
                 result = true;
+            }
             else
                 result = false;
             return result;
@@ -87,17 +94,13 @@ namespace project
         private void signUpButton_Click(object sender, EventArgs e)
         {
             bool result = Authorization();
-            /*
-            if (result == true)
-                WindowLoad(mainWindow);
-            */
             if (result == true)
             {
                 this.Hide();
                 mainWindow.Show();
             }
             else
-                MessageBox.Show("неправильно блять");
+                MessageBox.Show("Логин или пароль не правельны","Error");
             
         }
     }

@@ -17,7 +17,6 @@ namespace project
         private Button activeButton = null;
         private Workers workers = new Workers();
         private Vacations vacations = new Vacations();
-        private PassportData passportData = new PassportData();
         private PlaceHolder placeHolder = new PlaceHolder();
         public MySqlConnection conn;
 
@@ -61,11 +60,6 @@ namespace project
         private void vacationsButton_Click(object sender, EventArgs e)
         {
             WindowLoad(vacations, vacationsButton);
-        }
-
-        private void pasportButton_Click(object sender, EventArgs e)
-        {
-            WindowLoad(passportData, pasportButton);
         }
 
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
