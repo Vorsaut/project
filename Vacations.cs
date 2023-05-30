@@ -39,25 +39,21 @@ namespace project
             dataGridView1.Columns[1].Visible = true;
             dataGridView1.Columns[2].Visible = true;
             dataGridView1.Columns[3].Visible = true;
-            dataGridView1.Columns[4].Visible = true;
 
             dataGridView1.Columns[0].FillWeight = 15;
             dataGridView1.Columns[1].FillWeight = 40;
             dataGridView1.Columns[2].FillWeight = 15;
             dataGridView1.Columns[3].FillWeight = 15;
-            dataGridView1.Columns[4].FillWeight = 15;
 
             dataGridView1.Columns[0].ReadOnly = true;
             dataGridView1.Columns[1].ReadOnly = false;
             dataGridView1.Columns[2].ReadOnly = false;
             dataGridView1.Columns[3].ReadOnly = false;
-            dataGridView1.Columns[4].ReadOnly = false;
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.ColumnHeadersVisible = true;
@@ -72,7 +68,7 @@ namespace project
 
         public void GetList()
         {
-            string commandStr = "SELECT FIO AS 'ФИО', WorkedMonths AS 'Отработанные Месяца', Salary AS 'Деньги', Otpusk AS 'Количество отпускых дней', Calendar AS 'Календарь' FROM Vacations";
+            string commandStr = "SELECT FIO AS 'ФИО', WorkedMonths AS 'Отработанные Месяца', Otpusk AS 'Количество отпускых дней', Calendar AS 'Календарь' FROM Vacations";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);

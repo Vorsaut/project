@@ -30,7 +30,6 @@
         {
             this.editButton = new System.Windows.Forms.Button();
             this.ageText = new System.Windows.Forms.TextBox();
-            this.hoursText = new System.Windows.Forms.TextBox();
             this.expText = new System.Windows.Forms.TextBox();
             this.salaryText = new System.Windows.Forms.TextBox();
             this.postCombo = new System.Windows.Forms.ComboBox();
@@ -52,13 +51,6 @@
             this.ageText.Name = "ageText";
             this.ageText.Size = new System.Drawing.Size(100, 20);
             this.ageText.TabIndex = 1;
-            // 
-            // hoursText
-            // 
-            this.hoursText.Location = new System.Drawing.Point(249, 34);
-            this.hoursText.Name = "hoursText";
-            this.hoursText.Size = new System.Drawing.Size(100, 20);
-            this.hoursText.TabIndex = 2;
             // 
             // expText
             // 
@@ -90,7 +82,6 @@
             this.Controls.Add(this.postCombo);
             this.Controls.Add(this.salaryText);
             this.Controls.Add(this.expText);
-            this.Controls.Add(this.hoursText);
             this.Controls.Add(this.ageText);
             this.Controls.Add(this.editButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -106,7 +97,6 @@
 
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.TextBox ageText;
-        private System.Windows.Forms.TextBox hoursText;
         private System.Windows.Forms.TextBox expText;
         private System.Windows.Forms.TextBox salaryText;
         private System.Windows.Forms.ComboBox postCombo;

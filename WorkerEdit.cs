@@ -27,7 +27,6 @@ namespace project
             GetPosts();
             ageText.Text = GetInfo("Age");
             postCombo.Text = GetInfo("IdPost");
-            hoursText.Text = GetInfo("WorkedHours");
             expText.Text = GetInfo("StajRaboti");
             salaryText.Text = GetInfo("Salary");
         }
@@ -43,9 +42,10 @@ namespace project
 
         public void WorkerUpdate()
         {
-            MySqlCommand cmd = new MySqlCommand($"update Workers (Age) ", conn);
+            MySqlCommand cmd = new MySqlCommand($"update Workers set Age = '{ageText.Text}', IdPost = '{postCombo.Text}', StajRaboti = '{expText.Text}', Salary = '{salaryText.Text}' ", conn);
             conn.Open();
-
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void GetPosts()
@@ -60,7 +60,7 @@ namespace project
 
         private void editButton_Click(object sender, EventArgs e)
         {
-
+            WorkerUpdate();
         }
     }
 }
