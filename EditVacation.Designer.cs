@@ -28,51 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.windowPanel = new System.Windows.Forms.Panel();
-            this.editDataButton = new System.Windows.Forms.Button();
-            this.vacationSetButton = new System.Windows.Forms.Button();
             this.fioComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // windowPanel
-            // 
-            this.windowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.windowPanel.BackColor = System.Drawing.Color.LightGray;
-            this.windowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.windowPanel.Location = new System.Drawing.Point(0, 37);
-            this.windowPanel.Name = "windowPanel";
-            this.windowPanel.Size = new System.Drawing.Size(612, 215);
-            this.windowPanel.TabIndex = 0;
-            // 
-            // editDataButton
-            // 
-            this.editDataButton.BackColor = System.Drawing.Color.Transparent;
-            this.editDataButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.editDataButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.editDataButton.FlatAppearance.BorderSize = 0;
-            this.editDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.editDataButton.Location = new System.Drawing.Point(0, 0);
-            this.editDataButton.Name = "editDataButton";
-            this.editDataButton.Size = new System.Drawing.Size(179, 37);
-            this.editDataButton.TabIndex = 1;
-            this.editDataButton.Text = "Редактировать данные";
-            this.editDataButton.UseVisualStyleBackColor = false;
-            this.editDataButton.Click += new System.EventHandler(this.editData_Click);
-            // 
-            // vacationSetButton
-            // 
-            this.vacationSetButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.vacationSetButton.BackColor = System.Drawing.Color.Transparent;
-            this.vacationSetButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.vacationSetButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.vacationSetButton.Location = new System.Drawing.Point(179, 0);
-            this.vacationSetButton.Name = "vacationSetButton";
-            this.vacationSetButton.Size = new System.Drawing.Size(179, 37);
-            this.vacationSetButton.TabIndex = 2;
-            this.vacationSetButton.Text = "Выставить отпуск";
-            this.vacationSetButton.UseVisualStyleBackColor = false;
-            this.vacationSetButton.Click += new System.EventHandler(this.vacationSet_Click);
             // 
             // fioComboBox
             // 
@@ -93,16 +55,64 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ФИО";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comboBox1.Location = new System.Drawing.Point(30, 76);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 5;
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(30, 125);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(291, 125);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 7;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(154, 188);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EditVacation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 252);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fioComboBox);
-            this.Controls.Add(this.vacationSetButton);
-            this.Controls.Add(this.editDataButton);
-            this.Controls.Add(this.windowPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditVacation";
             this.Text = "EditVacation";
@@ -113,11 +123,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel windowPanel;
-        private System.Windows.Forms.Button editDataButton;
-        private System.Windows.Forms.Button vacationSetButton;
         public System.Windows.Forms.ComboBox fioComboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button button2;
     }
 }

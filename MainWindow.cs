@@ -17,7 +17,6 @@ namespace project
         private Button activeButton = null;
         private Workers workers = new Workers();
         private Vacations vacations = new Vacations();
-        private PlaceHolder placeHolder = new PlaceHolder();
         public MySqlConnection conn;
 
         public MainWindow()

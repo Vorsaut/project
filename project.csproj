@@ -112,12 +112,6 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlaceHolder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlaceHolder.Designer.cs">
-      <DependentUpon>PlaceHolder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VacationDateEdit.cs">
@@ -161,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PlaceHolder.resx">
-      <DependentUpon>PlaceHolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

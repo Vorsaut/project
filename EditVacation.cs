@@ -17,19 +17,10 @@ namespace project
         {
             InitializeComponent();
         }
-
-
-        private Form activeWindow = null;
-        private Button activeButton = null;
-        VacationSet vacationSet = new VacationSet();
-        VacationDateEdit vacationDateEdit = new VacationDateEdit();
-        public string fio;
         MySqlConnection conn;
 
         private void EditVacation_Load(object sender, EventArgs e)
         {
-            editDataButton.Enabled = false;
-            vacationSetButton.Enabled = false;
             conn = new MySqlConnection("server=chuc.sdlik.ru;port=33333;user=nikolaev_vkr;database=nikolaev_vkr;password=dj2o3mjj1ds;");
             MySqlCommand cmd = new MySqlCommand("select FIO from Vacations", conn);
             conn.Open();
@@ -37,51 +28,73 @@ namespace project
             while (reader.Read())
                 fioComboBox.Items.Add(reader.GetString(0));
             conn.Close();
+            dateTimePicker1.MinDate = DateTime.Today;
         }
 
-        private void WindowLoad(Form window, Button presedButton)
+        public int DateMath()
         {
-            if (activeButton != null)
+            try
             {
-                activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular);
-                activeButton.BackColor = Color.Transparent;
-                activeWindow.Hide();
+                MySqlCommand cmd = new MySqlCommand($"select Otpusk from Vacations where FIO = '{fioComboBox.Text}'", conn);
+                conn.Open();
+                int result = Convert.ToInt32(cmd.ExecuteScalar());
+                conn.Close();
+                return result;
             }
-            window.FormBorderStyle = FormBorderStyle.None;
-            window.Dock = DockStyle.Fill;
-            window.TopLevel = false;
-            this.windowPanel.Controls.Add(window);
-            this.windowPanel.Tag = window;
-            window.BringToFront();
-            window.Show();
-            activeWindow = window;
-            activeButton = presedButton;
-            activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold);
-            activeButton.BackColor = Color.LightGray;
+            catch (Exception ex)
+            {
+                return 1;
+            }
         }
 
-        private void editData_Click(object sender, EventArgs e)
+        public void CalendarEdit()
         {
-           WindowLoad(vacationDateEdit, editDataButton);
-        }
-
-        private void vacationSet_Click(object sender, EventArgs e)
-        {
-            WindowLoad(vacationSet, vacationSetButton);
-        }
-
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            try
+            {
+                dateTimePicker2.MaxDate = dateTimePicker1.Value.AddDays(DateMath() - 1);
+                dateTimePicker2.MinDate = dateTimePicker1.Value;
+            }
+            catch (Exception ex)
+            {
+                dateTimePicker2.MinDate = dateTimePicker1.Value;
+                dateTimePicker2.MaxDate = dateTimePicker1.Value.AddDays(DateMath() - 1);
+            }
         }
 
         private void fioComboBox_TextChanged(object sender, EventArgs e)
         {
-            vacationSet.fio = fioComboBox.Text;
-            vacationSet.CalendarEdit();
-            vacationDateEdit.fio = fioComboBox.Text;
-            editDataButton.Enabled = true;
-            vacationSetButton.Enabled = true;
+            MySqlCommand cmd = new MySqlCommand("select FIO from Vacations where");
+            CalendarEdit();
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            MySqlCommand cmd = new MySqlCommand($"update Vacations set WorkedMonths = '{comboBox1.Text}', Otpusk = '{Convert.ToInt32(comboBox1.Text) * 2}' where FIO = '{fioComboBox.Text}'", conn);
+            conn.Open();
+            cmd.ExecuteScalar();
+            conn.Close();
+            CalendarEdit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MySqlCommand cmd = new MySqlCommand($"update Vacations set WorkedMonths = '{comboBox1.Text}', Otpusk = '{Convert.ToInt32(comboBox1.Text) * 2}' where FIO = '{fioComboBox.Text}'", conn);
+            conn.Open();
+            cmd.ExecuteScalar();
+            conn.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CalendarEdit();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MySqlCommand cmd = new MySqlCommand($"update Vacations set Calendar = ('с {dateTimePicker1.Value.ToShortDateString()} по {dateTimePicker2.Value.ToShortDateString()}') where FIO = '{fioComboBox.Text}'", conn);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }
