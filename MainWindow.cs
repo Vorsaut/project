@@ -36,7 +36,7 @@ namespace project
             if(activeButton != null)
             {
                 activeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
-                activeButton.BackColor = Color.DarkSalmon;
+                activeButton.BackColor = Color.DodgerBlue;
                 activeWindow.Hide();
             }
             window.FormBorderStyle = FormBorderStyle.None;

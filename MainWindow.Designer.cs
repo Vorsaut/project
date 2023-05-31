@@ -37,7 +37,7 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panelMenu.BackColor = System.Drawing.Color.DodgerBlue;
             this.panelMenu.Controls.Add(this.vacationsButton);
             this.panelMenu.Controls.Add(this.workerButton);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -48,13 +48,14 @@
             // 
             // vacationsButton
             // 
-            this.vacationsButton.BackColor = System.Drawing.Color.DarkSalmon;
-            this.vacationsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.vacationsButton.BackColor = System.Drawing.Color.Transparent;
+            this.vacationsButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.vacationsButton.FlatAppearance.BorderSize = 0;
             this.vacationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vacationsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.vacationsButton.Location = new System.Drawing.Point(0, 68);
+            this.vacationsButton.Location = new System.Drawing.Point(0, 403);
             this.vacationsButton.Name = "vacationsButton";
-            this.vacationsButton.Size = new System.Drawing.Size(153, 62);
+            this.vacationsButton.Size = new System.Drawing.Size(153, 97);
             this.vacationsButton.TabIndex = 2;
             this.vacationsButton.Text = "Отпуска";
             this.vacationsButton.UseVisualStyleBackColor = false;
@@ -62,13 +63,14 @@
             // 
             // workerButton
             // 
-            this.workerButton.BackColor = System.Drawing.Color.DarkSalmon;
+            this.workerButton.BackColor = System.Drawing.Color.Transparent;
             this.workerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.workerButton.FlatAppearance.BorderSize = 0;
             this.workerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.workerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.workerButton.Location = new System.Drawing.Point(0, 0);
             this.workerButton.Name = "workerButton";
-            this.workerButton.Size = new System.Drawing.Size(153, 68);
+            this.workerButton.Size = new System.Drawing.Size(153, 100);
             this.workerButton.TabIndex = 0;
             this.workerButton.Text = "Сотрудники";
             this.workerButton.UseVisualStyleBackColor = false;
@@ -76,6 +78,7 @@
             // 
             // panelFront
             // 
+            this.panelFront.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panelFront.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFront.Location = new System.Drawing.Point(153, 0);
             this.panelFront.Name = "panelFront";

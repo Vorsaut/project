@@ -49,6 +49,12 @@ namespace project
         private void addButton_Click(object sender, EventArgs e)
         {
             InsertWorker(fioText, ageText, genderText, postCombo);
+            MessageBox.Show("Сотрудник добавлен");
+        }
+
+        private void genderText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

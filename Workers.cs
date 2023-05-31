@@ -66,7 +66,7 @@ namespace project
 
         public void GetListWorkers()
         {
-            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Age AS 'Возраст', Gender AS 'Пол', IdPost AS 'Должность', Salary AS 'Зарплата' FROM Workers";
+            string commandStr = "SELECT ID AS 'ID', FIO AS 'ФИО', Age AS 'Возраст', Gender AS 'Пол', IdPost AS 'Должность', StajRaboti AS 'Стаж работы', Salary AS 'Зарплата' FROM Workers";
             conn.Open();
             daAD.SelectCommand = new MySqlCommand(commandStr, conn);
             daAD.Fill(table);
@@ -136,6 +136,8 @@ namespace project
         {
             AddWorker addWorker = new AddWorker();
             addWorker.ShowDialog();
+            table.Clear();
+            GetListWorkers();
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -147,6 +149,8 @@ namespace project
                 WorkerEdit workerEdit = new WorkerEdit();
                 workerEdit.id = idSelectedRow;
                 workerEdit.ShowDialog();
+                table.Clear();
+                GetListWorkers();
             }
         }
 

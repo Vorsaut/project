@@ -41,7 +41,7 @@
             // 
             // fioText
             // 
-            this.fioText.Location = new System.Drawing.Point(34, 60);
+            this.fioText.Location = new System.Drawing.Point(12, 40);
             this.fioText.Name = "fioText";
             this.fioText.Size = new System.Drawing.Size(247, 20);
             this.fioText.TabIndex = 0;
@@ -49,16 +49,16 @@
             // postCombo
             // 
             this.postCombo.FormattingEnabled = true;
-            this.postCombo.Location = new System.Drawing.Point(287, 60);
+            this.postCombo.Location = new System.Drawing.Point(12, 66);
             this.postCombo.Name = "postCombo";
-            this.postCombo.Size = new System.Drawing.Size(135, 21);
+            this.postCombo.Size = new System.Drawing.Size(247, 21);
             this.postCombo.TabIndex = 3;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(34, 241);
+            this.addButton.Location = new System.Drawing.Point(12, 93);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(165, 23);
+            this.addButton.Size = new System.Drawing.Size(247, 23);
             this.addButton.TabIndex = 4;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
@@ -66,22 +66,23 @@
             // 
             // ageText
             // 
-            this.ageText.Location = new System.Drawing.Point(34, 143);
+            this.ageText.Location = new System.Drawing.Point(265, 40);
             this.ageText.Name = "ageText";
-            this.ageText.Size = new System.Drawing.Size(146, 20);
+            this.ageText.Size = new System.Drawing.Size(67, 20);
             this.ageText.TabIndex = 5;
             // 
             // genderText
             // 
-            this.genderText.Location = new System.Drawing.Point(186, 143);
+            this.genderText.Location = new System.Drawing.Point(338, 40);
             this.genderText.Name = "genderText";
             this.genderText.Size = new System.Drawing.Size(100, 20);
             this.genderText.TabIndex = 6;
+            this.genderText.TextChanged += new System.EventHandler(this.genderText_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 44);
+            this.label1.Location = new System.Drawing.Point(121, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 12;
@@ -90,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(289, 44);
+            this.label2.Location = new System.Drawing.Point(262, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 13;
@@ -99,7 +100,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 127);
+            this.label6.Location = new System.Drawing.Point(272, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 17;
@@ -108,7 +109,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(183, 127);
+            this.label7.Location = new System.Drawing.Point(373, 24);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 13);
             this.label7.TabIndex = 18;
@@ -118,7 +119,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.ClientSize = new System.Drawing.Size(445, 235);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
@@ -128,6 +130,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.postCombo);
             this.Controls.Add(this.fioText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddWorker";
             this.Text = "AddWorker";
             this.Load += new System.EventHandler(this.AddWorker_Load);
