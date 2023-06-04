@@ -63,14 +63,15 @@ namespace project
 
         private void fioComboBox_TextChanged(object sender, EventArgs e)
         {
-            MySqlCommand cmd = new MySqlCommand("select FIO from Vacations where");
+            //MySqlCommand cmd = new MySqlCommand("select FIO from Vacations where");
             CalendarEdit();
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
             MySqlCommand cmd = new MySqlCommand($"update Vacations set WorkedMonths = '{comboBox1.Text}', Otpusk = '{Convert.ToInt32(comboBox1.Text) * 2}' where FIO = '{fioComboBox.Text}'", conn);
-            conn.Open();
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
             cmd.ExecuteScalar();
             conn.Close();
             CalendarEdit();

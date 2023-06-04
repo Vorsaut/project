@@ -95,7 +95,7 @@
             // editButton
             // 
             this.editButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editButton.Image = ((System.Drawing.Image)(resources.GetObject("editButton.Image")));
+            this.editButton.Image = global::project.Properties.Resources._5;
             this.editButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(23, 22);

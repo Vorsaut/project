@@ -101,7 +101,7 @@
             // deleteButton
             // 
             this.deleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Image = global::project.Properties.Resources._65;
             this.deleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(23, 22);
@@ -122,7 +122,7 @@
             // addWorkersButton
             // 
             this.addWorkersButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addWorkersButton.Image = ((System.Drawing.Image)(resources.GetObject("addWorkersButton.Image")));
+            this.addWorkersButton.Image = global::project.Properties.Resources.pngwing_com__3_;
             this.addWorkersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addWorkersButton.Name = "addWorkersButton";
             this.addWorkersButton.Size = new System.Drawing.Size(23, 22);

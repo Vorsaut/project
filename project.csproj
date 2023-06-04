@@ -207,5 +207,14 @@
   <ItemGroup>
     <None Include="Resources\free-icon-check-mark-4225683_photo-resizer.ru.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="65.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pngwing.com %283%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -87,11 +87,8 @@ namespace project
         {
             EditVacation editVacation = new EditVacation();
             editVacation.ShowDialog();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-
+            table.Clear();
+            GetList();
         }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
